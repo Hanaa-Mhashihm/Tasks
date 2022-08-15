@@ -1,0 +1,54 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    background-color: rgb(10, 34, 54);
+}
+
+h3 {
+    color: rgb(255, 178, 78);
+}
+
+h5 {
+    color: #000;
+    font-weight: bold;
+}
+
+.form-control {
+    height: 45px;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+.flex-centered {
+    margin: auto;
+}
+
+.radio-btn {
+    color: #fff;
+}
+.radio {
+    height: 20px;
+    width: 20px;
+    /* border: 1px solid rgb(255, 178, 78); */
+}
+.v-msg {
+    color: red;
+    font-size: 14px;
+}
+
+.submit-btn {
+    background-color: rgb(255, 178, 78);
+    border: none;
+    color: rgb(10, 34, 54);
+    font-weight: bold;
+}
+
+.card {
+    background-color: #fff;
+    height: 90px;
+    width: 500px;
+    border-color: rgb(255, 178, 78);
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    border-radius: 5px;
+}

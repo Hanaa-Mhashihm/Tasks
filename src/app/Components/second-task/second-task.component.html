@@ -1,0 +1,92 @@
+<div class="container">
+    <div class="col-lg-12 d-flex justify-content-center mt-4">
+        <h3>Second Task</h3>
+    </div>
+    
+    <form [formGroup]="informationFormGroup" class="form-group">
+        <div class="col-lg-5 flex-centered">
+            <input formControlName="age" id="age" type="number" placeholder="Enter age"
+            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" class="form-control">
+            <div *ngIf="isSubmitting && informationForm.age.errors">
+              <div class="v-msg" *ngIf="informationForm.age.errors.required">
+                This field is required
+              </div>
+            </div>
+        </div>
+
+          <div class="col-lg-5 flex-centered">
+            <input formControlName="name" id="name" type="text" placeholder="Enter your name"
+              class="form-control">
+            <div *ngIf="isSubmitting && informationForm.name.errors">
+              <div class="v-msg" *ngIf="informationForm.name.errors.required">
+                This field is required
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-5 flex-centered">
+            <textarea formControlName="address" id="address" name="subject" placeholder="Enter smome data" style="height:150px; "
+                class="form-control"></textarea>
+            <div *ngIf="isSubmitting && informationForm.address.errors">
+              <div class="v-msg" *ngIf="informationForm.address.errors.required">
+                This field is required
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-5 flex-centered">
+            <input formControlName="birthDate" id="date" type="date" placeholder="Enter your date of birth"
+              class="form-control">
+            <div *ngIf="isSubmitting && informationForm.birthDate.errors">
+              <div class="v-msg" *ngIf="informationForm.birthDate.errors.required ">
+                This field is required
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-5 flex-centered  mt-3">
+            <input type="radio" id="gender" formControlName="gender" value="male"
+              class="radio">
+            <label for="a" class="radio-btn mx-1">
+              Male
+            </label>
+
+            <input type="radio" id="gender" formControlName="gender" value="female"
+             class="radio mx-2">
+            <label for="b" class="radio-btn">
+              Female
+            </label>
+
+            <div *ngIf="isSubmitting && informationForm.gender.errors">
+              <div class="v-msg" *ngIf="informationForm.gender.errors.required ">
+                This field is required
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="col-lg-6">
+            <input type="radio" id="b" name="type" [value]="true"
+              (click)="checkMe()">
+            <label for="b" class="radio-btn">
+              Female
+            </label>
+          </div> -->
+
+          <div class=" col-lg-5 flex-centered mt-3">
+            <button (click)="submit()" class="form-control submit-btn " type="submit">
+              Submit
+              <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status"
+                aria-hidden="true"></span>
+            </button>
+          </div>
+    </form>
+
+    <div class="d-flex justify-content-center mt-3 mb-3">
+      <span style="color:#fff">
+        {{informationFormGroup.value | json}}
+        <!-- {{information}} -->
+      </span>
+    </div>
+
+</div>
+
