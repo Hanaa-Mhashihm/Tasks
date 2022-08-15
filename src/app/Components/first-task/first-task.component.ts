@@ -67,50 +67,22 @@ export class FirstTaskComponent implements OnInit {
     let month = new Date(formValues.requestDate).getMonth();
 
     // let month = date.getMonth()
-    for (let i=1; i <= formValues.tenure; i++){
-      const loanManagement = {
-        deductedLoan: (formValues.loan / formValues.tenure).toFixed(2),
-        month: (new Date(formValues.requestDate).getMonth()+1) + i,
-        year: new Date(formValues.requestDate).getFullYear()
-      }
-      if(loanManagement.month > 12) {
-        let j = 0;
-        for(j=0; j<=i; j++){
-          loanManagement.month = loanManagement.month - j;
+    if(deductedLoan > formValues.monthlySalary){
+      for (let i=1; i <= formValues.tenure; i++){
+        const loanManagement = {
+          month: (new Date(formValues.requestDate).getMonth()+1) + i,
+          year: new Date(formValues.requestDate).getFullYear(),
+          amount: (formValues.loan / formValues.tenure).toFixed(2)
+        }
+        if(loanManagement.month > 12) {
+          loanManagement.month = loanManagement.month - 12;
           loanManagement.year = new Date(formValues.requestDate).getFullYear()+1
         }
+        console.log('Loan Management Output', loanManagement);
       }
-      console.log('Date', loanManagement);
     }
-    // console.log('deductedLoan', deductedLoan);
+    else {
+      console.log('Your Montly Salary is less than deducted loan');
+    }
   }
-
-  claculate() {
-      let deductedLoan = (this.loan / 7).toFixed(2);
-      // let result1 = deductedLoan.toFixed(2);
-      
-      for(let i=0; i<7; i++){
-        let result;
-        if(i < 6) {
-          result = [
-            {
-              month: 7 + i,
-              year: '2020',
-              amount: deductedLoan
-            }
-          ]
-        }
-        else {
-          result = [
-            {
-              month: 1,
-              year: '2021',
-              amount: 2857.14 + 0.02
-            }
-          ]
-        }
-        console.log('First Task' + ' ' +' deductedLoan', result);
-      }
-  }
-
 }
