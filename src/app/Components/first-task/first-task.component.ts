@@ -60,19 +60,27 @@ export class FirstTaskComponent implements OnInit {
       loan: this.loanForm.loan.value,
       tenure: this.loanForm.tenure.value,
       requestDate: this.loanForm.requestDate.value,
+
     }
 
-    let deductedLoan = (formValues.loan / formValues.tenure).toFixed(2);
+    // let deductedLoan: any = (formValues.loan / formValues.tenure).toFixed(2);
+    // let finalLoan = deductedLoan*formValues.tenure - 1;
+    // let result = formValues.loan - finalLoan;
     // formValues.requestDate = new Date(formValues.requestDate).toISOString();
-    let month = new Date(formValues.requestDate).getMonth();
-
+    // let month = new Date(formValues.requestDate).getMonth();
+    // let amount = (formValues.loan - ((deductedLoan)*(formValues.tenure-1))).toFixed(2)
     // let month = date.getMonth()
-    if(deductedLoan > formValues.monthlySalary){
+    // if(deductedLoan > formValues.monthlySalary){
+      
+      // let finalLoan: any = deductedLoan*(formValues.tenure - 1);
+      // let result = formValues.loan - finalLoan.toFixed(2);
       for (let i=1; i <= formValues.tenure; i++){
+        let deductedLoan: any = (formValues.loan / formValues.tenure).toFixed(2);
+        let finalLoan = formValues.loan - ((deductedLoan) * (formValues.tenure - 1))
         const loanManagement = {
           month: (new Date(formValues.requestDate).getMonth()+1) + i,
           year: new Date(formValues.requestDate).getFullYear(),
-          amount: (formValues.loan / formValues.tenure).toFixed(2)
+          amount: finalLoan.toFixed(2)
         }
         if(loanManagement.month > 12) {
           loanManagement.month = loanManagement.month - 12;
@@ -80,9 +88,9 @@ export class FirstTaskComponent implements OnInit {
         }
         console.log('Loan Management Output', loanManagement);
       }
-    }
-    else {
-      console.log('Your Montly Salary is less than deducted loan');
-    }
+    // }
+    // else {
+    //   console.log('Your Montly Salary is less than deducted loan');
+    // }
   }
 }
